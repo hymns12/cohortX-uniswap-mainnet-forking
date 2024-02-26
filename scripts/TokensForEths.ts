@@ -1,6 +1,7 @@
 import { ethers } from "hardhat";
 const helpers = require("@nomicfoundation/hardhat-toolbox/network-helpers");
 
+
 const main = async () => {
     const USDCAddress = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48";
     const DAIAddress = "0x6B175474E89094C44Da98b954EedeAC495271d0F";
@@ -48,30 +49,17 @@ const main = async () => {
     // );
 
     const swapTx = await ROUTER.connect(impersonatedSigner).swapExactTokensForTokens(
+        amountIn,
         amountOut,
-        100,
-        [USDCAddress, DAIAddress],
+        [USDCAddress, wethAdress],
         impersonatedSigner.address,
-        deadline
+        deadline,
     );
 
     await swapTx.wait();
 
-    const lookinTx = await ROUTER.connect(impersonatedSigner).swapExactTokensForTokens(
-        amountOut,
-        100,
-        [USDCAddress, DAIAddress],
-        impersonatedSigner.address,
-        deadline
-    );
-
-    const getingTx = await ROUTER.connect(impersonatedSigner).swapExactTokensForTokens(
-        amountOut,
-        100,
-        [USDCAddress, DAIAddress],
-        impersonatedSigner.address,
-        deadline
-    );
+    console.log("USDC balance:", ethers.formatUnits(usdcBal, 6));
+    console.log("DAI Balance:", ethers.formatUnits(daiBal, 18));
 
 
     // Uncomment this if you are using the swap tokens for ETH

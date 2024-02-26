@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
+
+import './IERC20.sol';
+
 interface IUniswap{
     function swapExactTokensForTokens(
         uint amountIn,
@@ -18,9 +21,11 @@ interface IUniswap{
     ) external returns (uint[] memory amounts);
 
     function swapTokensForExactETH(
-        uint amountOut, uint amountInMax,
+        uint amountOut,
+        uint amountInMax,
         address[] calldata path,
-        address to, uint deadline
+        address to,
+        uint deadline
     ) external returns (uint[] memory amounts);
 
     function addLiquidity(
@@ -33,4 +38,10 @@ interface IUniswap{
         address to,
         uint deadline
     ) external returns (uint amountA, uint amountB, uint liquidity);
+
+
+
+
 }
+
+
