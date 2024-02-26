@@ -10,7 +10,12 @@ const readOnly = async() =>{
 
     const result = await iSwap.WETH();
 
-    console.log(`get it ${result}`);
+    console.log(`carnonical weth address ${result}`);
+
+    const factoryAddress =await iSwap.factory();
+
+
+    console.log(`uniswap factory contract address ${factoryAddress}`)
 }
 
 
