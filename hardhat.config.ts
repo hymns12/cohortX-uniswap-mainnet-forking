@@ -2,9 +2,9 @@
 import "@nomicfoundation/hardhat-toolbox";
 require("dotenv").config({ path: ".env" });
 
-// const ALCHEMY_MAINNET_API_KEY_URL = process.env.FAGRO;
+const ALCHEMY_MAINNET_API_KEY_URL = process.env.FAGRO;
 
-const ALCHEMY_SEPOLIA_API_KEY_URL = process.env.FAGRO;
+// const ALCHEMY_SEPOLIA_API_KEY_URL = process.env.FAGRO;
 
 // const ALCHEMY_MUMBAI_API_KEY_URL = process.env.ALCHEMY_MUMBAI_API_KEY_URL;
 
@@ -15,13 +15,13 @@ module.exports = {
   networks: {
     hardhat: {
       forking: {
-        url: ALCHEMY_SEPOLIA_API_KEY_URL,
+        url: ALCHEMY_MAINNET_API_KEY_URL,
       }
     },
-    sepolia: {
-      url: ALCHEMY_SEPOLIA_API_KEY_URL,
-      accounts: [ACCOUNT_PRIVATE_KEY],
-    },
+    // sepolia: {
+    //   url: ALCHEMY_SEPOLIA_API_KEY_URL,
+    //   accounts: [ACCOUNT_PRIVATE_KEY],
+    // },
     // mumbai: {
     //   url: ALCHEMY_MUMBAI_API_KEY_URL,
     //   accounts: [ACCOUNT_PRIVATE_KEY],
